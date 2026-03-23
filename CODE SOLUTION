@@ -22,21 +22,50 @@ choice = input("choose A or B: ").strip().upper()
 if choice == "A": 
     print("\nGreat. You can now enter the difficult words.")
     print("Type one word at a time. Type 'done' when finished \n.")
-    difficult_words = []
-while True: 
-    word = input("Enter a difficult word: ").strip()
-    if word in TEXT:
-        if word.lower() == "done":
-            break 
-        elif word not in difficult_words:
-            difficult_words.append(word)
-        else: 
-            print("Word already in difficult words.") 
-    elif word.lower() == "done":
-        break 
-    else: 
-        print("Word not in text.")
-
-    print(difficult_words)
-
     
+    DICTIONARY = {  
+    "gasped": "To take a quick, sharp breath - usually because you're shocked, scared or out of breath.",
+    "ghosts": "The spirits of people who have died, imagined to appear in the world of the living.",
+    "streamed": "To move or flow continuously in one direction, like water flowing in a line.",
+    "transparent": "Something you can see through because it is clear.",
+    "glided": "To move smoothly and quietly, as if floating, without effort.",
+    "glancing": "Taking a quick, brief look at something, usually without turning your head fully or looking for long.",
+    "arguing": "Disagreeing with someone and speaking back and forth to explain your different opinions."
+}
+
+    difficult_words = []
+    while True: 
+        word = input("Enter a difficult word: ").strip()
+        
+        if word in TEXT:
+            if word.lower() == "done":
+                break 
+
+            elif word not in difficult_words:
+                difficult_words.append(word)
+            else: 
+                print("Word already in difficult words.") 
+        elif word.lower() == "done":
+            break 
+        else: 
+            print("Word not in text.")
+
+        print(difficult_words)
+
+    print("\n=== Definitions of Difficult Words ===")
+    #loops through each word as difficult 
+    for w in difficult_words:
+        # Looks up the word in the dictionary.
+        # .get() tries to find the definition using the lowercase version of the word.
+        # If the word is not in the dictionary, it returns "No definition found." instead of causing an error.
+        meaning = DICTIONARY.get(w.lower(), "No definition found.")
+        print(f"{w}: {meaning}")
+
+elif choice == "B": 
+    print("\nAlright. You haven't found any words.")
+    difficult_words = []
+    print("\nYou may continue reading.")
+
+else: 
+    print("\nInvalid choice.")
+    difficult_words = []
