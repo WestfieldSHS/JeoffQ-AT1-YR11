@@ -1,14 +1,12 @@
 TEXT = """
-He gasped. So did the people around him. About
-twenty ghosts had just streamed through the back wall.
-Pearly-white and slightly transparent, they glided across
-the room talking to each other and hardly glancing at the
-first-years. They seemed to be arguing.
+He gasped. So did the people around him. About twenty ghosts had just streamed through the back wall. Pearly-white and slightly transparent, they glided across the room talking to each other and hardly glancing at the first-years. They seemed to be arguing.
+
+- Extract from Harry Potter and the Philosopher's Stone by J.K Rowling
 """
 #\n means to start a new line 
 
 print("=== Reading Assistant ===")
-print("\nHere is your text:"")
+print("\nHere is your text:")
 print(TEXT)
 
 print("\nDid you find any difficult words?")
@@ -19,9 +17,26 @@ print("B: No")
 
 choice = input("choose A or B: ").strip().upper()
 
+#difficult_words = [] creates an empty list, while True is an infinite loop, word.lower() converts strings to lowercase 
+
 if choice == "A": 
     print("\nGreat. You can now enter the difficult words.")
-elif choice == "B":
-    print("\nNo problem. You may continue reading.")
-else: 
-    print("\nInvalid choice.")
+    print("Type one word at a time. Type 'done' when finished \n.")
+    difficult_words = []
+while True: 
+    word = input("Enter a difficult word: ").strip()
+    if word in TEXT:
+        if word.lower() == "done":
+            break 
+        elif word not in difficult_words:
+            difficult_words.append(word)
+        else: 
+            print("Word already in difficult words.") 
+    elif word.lower() == "done":
+        break 
+    else: 
+        print("Word not in text.")
+
+    print(difficult_words)
+
+    
