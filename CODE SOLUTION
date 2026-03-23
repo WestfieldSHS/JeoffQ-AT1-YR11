@@ -1,0 +1,27 @@
+TEXT = """
+He gasped. So did the people around him. About
+twenty ghosts had just streamed through the back wall.
+Pearly-white and slightly transparent, they glided across
+the room talking to each other and hardly glancing at the
+first-years. They seemed to be arguing.
+"""
+#\n means to start a new line 
+
+print("=== Reading Assistant ===")
+print("\nHere is your text:"")
+print(TEXT)
+
+print("\nDid you find any difficult words?")
+print("A: Yes")
+print("B: No")
+
+#strip.() is to clean up the user input and upper.() is to turn the text into capital letters. 
+
+choice = input("choose A or B: ").strip().upper()
+
+if choice == "A": 
+    print("\nGreat. You can now enter the difficult words.")
+elif choice == "B":
+    print("\nNo problem. You may continue reading.")
+else: 
+    print("\nInvalid choice.")
