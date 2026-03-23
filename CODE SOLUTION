@@ -52,14 +52,23 @@ if choice == "A":
 
         print(difficult_words)
 
-    print("\n=== Definitions of Difficult Words ===")
-    #loops through each word as difficult 
+    missing = []
+
     for w in difficult_words:
-        # Looks up the word in the dictionary.
-        # .get() tries to find the definition using the lowercase version of the word.
-        # If the word is not in the dictionary, it returns "No definition found." instead of causing an error.
-        meaning = DICTIONARY.get(w.lower(), "No definition found.")
-        print(f"{w}: {meaning}")
+        if w.lower() not in DICTIONARY: 
+            missing.append(w)
+    
+    if missing: 
+        print("\nThe following word(s) have no definition.")
+        for m in missing: 
+            print(f"-{m}")
+
+            print("\nPlease check again if you've found any difficult words.")
+    else: 
+        print("\n=== Definitions of Difficult Words ===")
+        for w in difficult_words:
+            meaning = DICTIONARY.get(w.lower(), "No definition found.")
+            print(f"{w}: {meaning}")
 
 elif choice == "B": 
     print("\nAlright. You haven't found any words.")
