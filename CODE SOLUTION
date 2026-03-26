@@ -73,7 +73,7 @@ if choice == "A":
 elif choice == "B": 
     print("\nAlright. You haven't found any words.")
     difficult_words = []
-    print("\nYou may continue reading.")
+    print("\nYou may continue reading. Run the program again to start.")
 
 else: 
     print("\nInvalid choice.")
