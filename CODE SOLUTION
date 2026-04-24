@@ -1,8 +1,65 @@
+import random 
+
+def take_quiz(DICTIONARY, difficult_words,):
+    print('\nWould you like to take a quiz on your difficult words?')
+    print("A: Yes")
+    print("B: No")
+
+    quiz_choice = input("Choose A or B: ").strip().upper()
+
+    if quiz_choice == "A":
+        print("\nGreat! Let the quiz begin!\n")
+
+        score = 0
+
+        for word in difficult_words: 
+            correct_answer = DICTIONARY[word.lower()]
+
+            wrong_answers = [v for k, v in DICTIONARY.items() if k != word.lower()]
+            wrong_choices = random.sample(wrong_answers, 3)
+
+            options = wrong_choices + [correct_answer]
+            random.shuffle(options)
+
+            print(f"\nWhat is the definition of '{word}'?")
+            
+            for i, option in enumerate(options, 1): 
+                print(f"{i}. {option}")
+
+            answer = input("Your answer (1-4): ").strip()
+
+            if answer.isdigit() and 1 <= int(answer) <= 4:
+                if options[int(answer) - 1] == correct_answer:
+                    print("Correct!")
+                    score += 1
+
+                else:
+                    print("Incorrect.")
+                    print(f"The correct answer was: {correct_answer}")
+
+            else:
+                print("Invalid choice. Moving to next question.")
+
+        print(f"\nYour Final Score is {score}/{len(difficult_words)}.")
+
+        if score == len(difficult_words):
+            print("Amazing! You mastered all the definitions.")
+        elif score >= len(difficult_words) // 2:
+            print("Great job! You're getting the hang of it.")
+        else:
+            print("Keep practising — you'll get there!")
+
+    else: 
+        print('\nGlad I helped, you may restart the program or continue reading.')
+
+
 TEXT = """
 He gasped. So did the people around him. About twenty ghosts had just streamed through the back wall. Pearly-white and slightly transparent, they glided across the room talking to each other and hardly glancing at the first-years. They seemed to be arguing.
 
 - Extract from Harry Potter and the Philosopher's Stone by J.K Rowling
 """
+
+
 #\n means to start a new line 
 
 print("=== Reading Assistant ===")
@@ -69,65 +126,15 @@ if choice == "A":
         for w in difficult_words:
             meaning = DICTIONARY.get(w.lower(), "No definition found.")
             print(f"{w}: {meaning}")
+    take_quiz(DICTIONARY,difficult_words)
 
 elif choice == "B": 
     print("\nAlright. You haven't found any words.")
     difficult_words = []
     print("\nYou may continue reading. Run the program again to start.")
+    
 
 else: 
     print("\nInvalid choice.")
     difficult_words = []
 
-import random 
-
-print('\nWould you like to take a quiz on your difficult words?')
-print("A: Yes")
-print("B: No")
-
-quiz_choice = input("Choose A or B: ").strip().upper()
-
-if quiz_choice == "A":
-     print("\nGreat! Let the quiz begin!\n")
-
-     score = 0
-
-     for word in difficult_words: 
-         correct_answer = DICTIONARY[word.lower()]
-
-         wrong_answers = [v for k, v in DICTIONARY.items() if k != word.lower()]
-         wrong_choices = random.sample(wrong_answers, 3)
-
-         options = wrong_choices + [correct_answer]
-         random.shuffle(options)
-
-         print(f"\nWhat is the definition of '{word}'?")
-         
-         for i, option in enumerate(options, 1): 
-             print(f"{i}. {option}")
-
-         answer = input("Your answer (1-4): ").strip()
-
-         if answer.isdigit() and 1 <= int(answer) <= 4:
-             if options[int(answer) - 1] == correct_answer:
-                print("Correct!")
-                score += 1
-
-             else:
-                print("Incorrect.")
-                print(f"The correct answer was: {correct_answer}")
-
-         else:
-            print("Invalid choice. Moving to next question.")
-
-     print(f"\nYour Final Score is {score}/{len(difficult_words)}.")
-
-     if score == len(difficult_words):
-        print("Amazing! You mastered all the definitions.")
-     elif score >= len(difficult_words) // 2:
-        print("Great job! You're getting the hang of it.")
-     else:
-        print("Keep practising — you'll get there!")
-
-else: 
-    print('\nGlad I helped, you may restart the program or continue reading.')
