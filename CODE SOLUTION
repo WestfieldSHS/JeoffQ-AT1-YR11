@@ -137,4 +137,4 @@ elif choice == "B":
 else: 
     print("\nInvalid choice.")
     difficult_words = []
-
+    
