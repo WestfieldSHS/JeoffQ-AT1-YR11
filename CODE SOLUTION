@@ -76,7 +76,7 @@ choice = input("choose A or B: ").strip().upper()
 
 #difficult_words = [] creates an empty list, while True is an infinite loop, word.lower() converts strings to lowercase 
 
-if choice == "A": 
+if choice == "A":
     print("\nGreat. You can now enter the difficult words.")
     print("Type one word at a time. Type 'done' when finished \n.")
     
