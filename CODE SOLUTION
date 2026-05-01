@@ -59,9 +59,6 @@ He gasped. So did the people around him. About twenty ghosts had just streamed t
 - Extract from Harry Potter and the Philosopher's Stone by J.K Rowling
 """
 
-
-#\n means to start a new line 
-
 print("=== Reading Assistant ===")
 print("\nHere is your text:")
 print(TEXT)
@@ -70,11 +67,7 @@ print("\nDid you find any difficult words?")
 print("A: Yes")
 print("B: No")
 
-#strip.() is to clean up the user input and upper.() is to turn the text into capital letters. 
-
 choice = input("choose A or B: ").strip().upper()
-
-#difficult_words = [] creates an empty list, while True is an infinite loop, word.lower() converts strings to lowercase 
 
 if choice == "A":
     print("\nGreat. You can now enter the difficult words.")
@@ -99,7 +92,10 @@ if choice == "A":
                 break 
 
             elif word not in difficult_words:
-                difficult_words.append(word)
+                if word in DICTIONARY:
+                    difficult_words.append(word)
+                else:
+                    print("Word is not in the program's Dictionary.")
             else: 
                 print("Word already in difficult words.") 
         elif word.lower() == "done":
@@ -120,7 +116,7 @@ if choice == "A":
         for m in missing: 
             print(f"-{m}")
 
-            print("\nPlease check again if you've found any difficult words.")
+            print("\nPlease check again if you've found any difficult words and restart the program.")
     else: 
         print("\n=== Definitions of Difficult Words ===")
         for w in difficult_words:
